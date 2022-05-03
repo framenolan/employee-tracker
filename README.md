@@ -2,9 +2,6 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-## Deployed Site
-
-[Deployed Site](https://framenolan.github.io/employee-tracker)
 
 ## Table of Contents
 * [Description](#description)
@@ -13,8 +10,6 @@
 * [Usage](#usage)
 * [Future Development](#future-development)
 * [Credits](#credits)
-* [Contributing](#contributing)
-* [Tests](#tests)
 * [Questions](#questions)
 * [License](#license)
 
@@ -24,36 +19,42 @@ This command line CRM organizes employees by job role and department. The app us
 
 ## Installation
 
-Run ```md npm i ```
+To install the necessary packages, run the following command in your terminal:
+```md
+npm install
+```
 
 ## Technologies
 
-- JavaScript
-- Node.js
-- Inquirer
-- MySQL
+- [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
+- [Node.js](https://nodejs.org/)
+- [Inquirer](https://www.npmjs.com/package/inquirer)
+- [MySQL](https://www.npmjs.com/package/mysql2)
+- [console.table](https://www.npmjs.com/package/console.table)
 
 ## Usage
 
+To open the app, run the following command in your terminal:
+```md
+node index.js
+```
 
+A screen recorded walkthrough of the app can be found here:
+
+[Video Walkthrough]()
 
 ## Future Development
+
+- Bug fixes
+- Expanded functionality on editing records
 
 ## Credits
 
 - Nolan Frame
 
-## Contributing
-
-
-
-## Tests
-
-
-
 ## Questions
 
-Please checkout [https://github.com/framenolan/](https://github.com/framenolan/) or email me at [](mailto:).
+Please checkout [https://github.com/framenolan/](https://github.com/framenolan/).
 
 ## License
 

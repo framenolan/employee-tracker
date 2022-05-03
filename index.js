@@ -13,13 +13,14 @@ const db = mysql.createConnection(
   console.log(`Connected to the database.`)
 );
 
-function selectAllQuery(table) {
-  db.query('SELECT * FROM ?;', table, function (err, results) {
-    const report = cTable.getTable('\n', results)
-    console.log(report)
-    console.log('==========')
-  })
-}
+// Attempt to functionize the query, didn't work
+// function selectAllQuery(table) {
+//   db.query('SELECT * FROM ?;', table, function (err, results) {
+//     const report = cTable.getTable('\n', results)
+//     console.log(report)
+//     console.log('==========')
+//   })
+// }
 
 
 function addDepartment() {
@@ -35,10 +36,7 @@ function addDepartment() {
       console.log(data)
       const answer = data.dept;
       console.log(answer)
-      db.query('INSERT INTO department (department_name) VALUES (?);', answer, function (err, results) {
-        console.log("inside insert query")
-        console.log(results)
-      })
+      db.query('INSERT INTO department (department_name) VALUES (?);', answer, function (err, results) {})
     })
     .then(() => {
       db.query('SELECT * FROM department;', function (err, results) {
@@ -73,14 +71,6 @@ function updateDept() {
 }
 
 function addEmployee() {
-
-  // db.promise().query('SELECT * FROM department;', function (err, results) {
-  //   const report = cTable.getTable('\n', results)
-  //   console.log(report)
-  // })
-  // const [rows, fields] = await db.execute('SELECT * FROM `employee` WHERE `manager` = ? AND `id` > ?', ['Morty', 14]);
-
-  // console.log([rows, fields])
   inquirer
     .prompt([
       {
@@ -111,11 +101,9 @@ function addEmployee() {
       }
     ])
     .then((data) => {
-      // I don't think this is going to work...
-      const answer = data;
+      const answer = [data.firstname, data.lastname, data.managerId];
       console.log(answer)
-      db.query('INSERT INTO employee (first_name, last_name, job_id, manager_id) VALUES (?);', answer, function (err, results) {
-        console.log("inside insert query")
+      db.query('INSERT INTO employee (first_name, last_name, manager_id) VALUES (?);', answer, function (err, results) {
         console.log(results)
       })
     })
@@ -152,10 +140,7 @@ function updateEmployee() {
     })
 }
 
-// const [rows, fields] = await db.execute('SELECT * FROM `table` WHERE `name` = ? AND `age` > ?', ['Morty', 14]);
-
 function addJob() {
-  console.log("line 148")
   inquirer
     .prompt([
       {
@@ -176,9 +161,7 @@ function addJob() {
     ])
     .then((data) => {
       const answer = [data.job, data.salary, data.dept];
-      console.log("line 168")
-      db.query('INSERT INTO job (job_name) VALUES (?);', answer, function (err, results) {
-        console.log("inside insert query")
+      db.query('INSERT INTO job (job_name, salary, department_id) VALUES (?);', answer, function (err, results) {
         console.log(results)
       })
     })
@@ -224,64 +207,81 @@ function menu() {
         type: 'list',
         message: 'What would you like to do?',
         name: 'menu',
-        choices: ['View All Departments', 'Add a Department', 'Update Department Name', 'View All Employees', 'Add an Employee', 'Update Employee Record', 'View All Job Roles', 'Add a Job Role', 'Update Job Role', 'Quit'],
+        choices: ['View All Departments', 'Add a Department', 'Update Department Name', 'View All Employees', 'Add an Employee', 'Update Employee Record', 'View All Job Roles', 'Update an Employee Role', 'Update Job Role', 'Quit'],
       }
     ])
     .then((answers) => {
       const choice = answers.menu
-      console.log(choice)
       switch (choice) {
-        case 'View All Departments':
-          console.log(choice)  
+        case 'View All Departments': 
           db.query('SELECT * FROM department;', function (err, results) {
             const report = cTable.getTable('\n', results)
             console.log(report)
+            console.log('\n\n\n\n\n\n\n')
             console.log('==========')
           })
+          console.log('226')
+          menu();
           break;
         case 'Add a Department':
           addDepartment();
+          console.log('231')
+          menu()
           break;
         case 'Update Department Name':
-          console.log("Update dept")
           updateDept();
+          console.log('236')
+          menu()
           break;
         case 'View All Employees':
-          console.log('F')
           db.query('SELECT employee.id, employee.first_name, employee.last_name, job.title, department.department_name, job.salary, employee.manager_id FROM employee JOIN job ON employee.job_id = job.id JOIN department ON job.department_id = department.id;', function (err, results) {
             const report = cTable.getTable('\n', results)
               console.log(report)
+              console.log('\n\n\n\n\n\n\n')
               console.log('==========')
             })
+            console.log('246')
+            menu()
           break;
         case 'Add an Employee':
           addEmployee();
+          console.log('251')
+          menu()
           break;
         case 'Update Employee Record':
           updateDept();
+          console.log('256')
+          menu()
           break;
         case 'View All Job Roles':
-          console.log('G')
           db.query('SELECT job.title, job.salary, department.department_name FROM job JOIN department ON job.department_id = department.id;', function (err, results) {
             const report = cTable.getTable('\n', results)
             console.log(report)
+            console.log('\n\n\n\n\n\n\n')
             console.log('==========')
           })
+          console.log('266')
+          menu()
           break;
         case 'Add a Job Role':
           addJob();
+          console.log('271')
+          menu()
           break;
-        case 'Update Job Role':
+        case 'Update an Employee Role':
           updateJob();
+          console.log('276')
+          menu()
           break;
         case 'Quit':
           process.exit();
         default:
           console.log("Whoopsie")
+          console.log('283')
+          menu()
       }
     })
-    .then(() => menu());
 }
 
-
+console.log('289')
 menu()
