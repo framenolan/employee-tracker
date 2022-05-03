@@ -39,12 +39,15 @@ To open the app, run the following command in your terminal:
 node index.js
 ```
 
+Upon opening the app, you will be presented with a menue of options to choose from.
+
 A screen recorded walkthrough of the app can be found here:
 
-[Video Walkthrough]()
+[Video Walkthrough](https://drive.google.com/file/d/1jX58mvazLUs34HrK9vclHrwHS8K-678e/view)
 
 ## Future Development
 
+- Completed functionality
 - Bug fixes
 - Expanded functionality on editing records
 

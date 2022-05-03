@@ -220,17 +220,17 @@ function menu() {
             console.log('\n\n\n\n\n\n\n')
             console.log('==========')
           })
-          console.log('226')
+          // console.log('226')
           menu();
           break;
         case 'Add a Department':
           addDepartment();
-          console.log('231')
+          // console.log('231')
           menu()
           break;
         case 'Update Department Name':
           updateDept();
-          console.log('236')
+          // console.log('236')
           menu()
           break;
         case 'View All Employees':
@@ -240,17 +240,17 @@ function menu() {
               console.log('\n\n\n\n\n\n\n')
               console.log('==========')
             })
-            console.log('246')
+            // console.log('246')
             menu()
           break;
         case 'Add an Employee':
           addEmployee();
-          console.log('251')
+          // console.log('251')
           menu()
           break;
         case 'Update Employee Record':
           updateDept();
-          console.log('256')
+          // console.log('256')
           menu()
           break;
         case 'View All Job Roles':
@@ -260,28 +260,28 @@ function menu() {
             console.log('\n\n\n\n\n\n\n')
             console.log('==========')
           })
-          console.log('266')
+          // console.log('266')
           menu()
           break;
         case 'Add a Job Role':
           addJob();
-          console.log('271')
+          // console.log('271')
           menu()
           break;
         case 'Update an Employee Role':
           updateJob();
-          console.log('276')
+          // console.log('276')
           menu()
           break;
         case 'Quit':
           process.exit();
         default:
           console.log("Whoopsie")
-          console.log('283')
+          // console.log('283')
           menu()
       }
     })
 }
 
-console.log('289')
+// console.log('289')
 menu()
