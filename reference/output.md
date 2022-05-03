@@ -30,8 +30,6 @@ Run ```md npm i ```
 
 - JavaScript
 - Node.js
-- Inquirer
-- MySQL
 
 ## Usage
 
